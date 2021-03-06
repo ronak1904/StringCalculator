@@ -31,15 +31,16 @@ public class StringCalculator {
         int answer = 0;
         String negatives = "";
         for(String operand: operands) {
-            int temp = Integer.parseInt(operand);
-            if(temp < 0) {
+            if(!operand.isEmpty()) {
+                int temp = Integer.parseInt(operand);
+                if(temp < 0) {
                     negatives += operand;
+                }else  {
+                    if(temp <= 1000) {
+                      answer += temp;                    
+                    }
                 }
-            else
-            {
-            answer+=temp;
             }
-         
         }
         
          if(!negatives.isEmpty()) {

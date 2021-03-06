@@ -57,4 +57,11 @@ public class StringCalculatorTest {
        int answer = StringCalculator.Add("//;\n1;-2");
     }
     
+    
+    @Test
+    public void testNumberBiggerThanThousand() {
+       assertEquals(2,StringCalculator.Add("//;\n1001;2"));
+    }
+
+    
 }
