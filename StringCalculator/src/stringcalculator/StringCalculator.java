@@ -18,12 +18,37 @@ public class StringCalculator {
     StringCalculator() {
         
     }
+     public static String get_default_delimeter() {
+        return ",";
+    }
+     
+    public static String[] get_number_lists(String delimeter, String number_string) {
+        String[] operands = number_string.split(delimeter);
+        return operands;
+    }
+    
+    public static int get_sum_of_operands(String[] operands){
+        int answer = 0;
+        for(String operand: operands) {
+            int temp = Integer.parseInt(operand);
+            answer+=temp;
+         
+        }
+        return answer;
+    }
     
     public static int Add(String numbers) {
+        String delimeter = "";
         if(numbers.isEmpty()) {
             return 0;
         }
-        return 1;
+        delimeter = get_default_delimeter(); 
+        String[] operands = get_number_lists(delimeter, numbers);
+        
+        int answer = 0;
+        answer = get_sum_of_operands(operands);
+        
+        return answer;
     }
     
 }
