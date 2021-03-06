@@ -36,5 +36,10 @@ public class StringCalculatorTest {
        assertEquals(6,StringCalculator.Add("1,2,3"));
     }
     
+    @Test
+    public void testNewlineDelimeter() {
+       assertEquals(6,StringCalculator.Add("1,2\n3"));
+    }
+    
     
 }

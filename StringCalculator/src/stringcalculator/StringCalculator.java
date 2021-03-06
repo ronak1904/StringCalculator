@@ -19,7 +19,7 @@ public class StringCalculator {
         
     }
      public static String get_default_delimeter() {
-        return ",";
+        return ",|\n";
     }
      
     public static String[] get_number_lists(String delimeter, String number_string) {
