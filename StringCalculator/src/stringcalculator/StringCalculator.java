@@ -29,10 +29,21 @@ public class StringCalculator {
     
     public static int get_sum_of_operands(String[] operands){
         int answer = 0;
+        String negatives = "";
         for(String operand: operands) {
             int temp = Integer.parseInt(operand);
+            if(temp < 0) {
+                    negatives += operand;
+                }
+            else
+            {
             answer+=temp;
+            }
          
+        }
+        
+         if(!negatives.isEmpty()) {
+            throw new ArithmeticException("negatives not allowed : " + negatives);
         }
         return answer;
     }

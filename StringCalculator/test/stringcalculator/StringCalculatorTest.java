@@ -5,7 +5,9 @@
  */
 package stringcalculator;
 import static org.junit.Assert.*;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 /**
  *
@@ -45,6 +47,14 @@ public class StringCalculatorTest {
     public void testCustomDelimeter() {
        assertEquals(3,StringCalculator.Add("//;\n1;2"));
     }
+    @Rule
+    public ExpectedException exception = ExpectedException.none();
     
+    @Test
+    public void testNegativeNumber() {
+       exception.expect(ArithmeticException.class);
+       exception.expectMessage("negatives not allowed : -2");
+       int answer = StringCalculator.Add("//;\n1;-2");
+    }
     
 }
