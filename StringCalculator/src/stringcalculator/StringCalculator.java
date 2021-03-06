@@ -42,7 +42,17 @@ public class StringCalculator {
         if(numbers.isEmpty()) {
             return 0;
         }
-        delimeter = get_default_delimeter(); 
+        
+        if(numbers.startsWith("//")) {
+            String firstLine = numbers.split("\n")[0];
+            numbers = numbers.split("\n")[1];
+            delimeter = firstLine.substring(2);
+            
+        }
+        else {
+           delimeter = get_default_delimeter();            
+        }
+        
         String[] operands = get_number_lists(delimeter, numbers);
         
         int answer = 0;
