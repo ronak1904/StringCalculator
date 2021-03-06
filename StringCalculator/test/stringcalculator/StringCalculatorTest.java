@@ -62,6 +62,15 @@ public class StringCalculatorTest {
     public void testNumberBiggerThanThousand() {
        assertEquals(2,StringCalculator.Add("//;\n1001;2"));
     }
+    
+    @Test
+    public void testMorethanoneLengthDelimeter() {
+       assertEquals(6,StringCalculator.Add("//[***]\n1***2***3"));
+    }
 
+    @Test
+    public void testMultipleDelimeter() {
+       assertEquals(6,StringCalculator.Add("//[****][%%]\n1****2%%3"));
+    }
     
 }

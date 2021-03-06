@@ -5,6 +5,9 @@
  */
 package stringcalculator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Dell
@@ -49,22 +52,51 @@ public class StringCalculator {
         return answer;
     }
     
-    public static int Add(String numbers) {
-        String delimeter = "";
-        if(numbers.isEmpty()) {
-            return 0;
+    public static String get_multiple_delimeter(String firstLine) {
+        List<String> list = new ArrayList<String>();
+        for(int i=2; i<firstLine.length(); i++) {
+            String temp = "";
+            temp += "[";
+            int j=i+1;
+            while(j < firstLine.length() && firstLine.charAt(j) != ']') {
+                temp += firstLine.charAt(j);
+                j++;
+            }
+            temp += "]";
+            i = j;
+            list.add(temp);
         }
         
+        String delimiter = "";
+        for(String x: list) {
+            delimiter += x;
+            delimiter += "|";
+        }
+        
+        return delimiter.substring(0, delimiter.length()-1);
+    }
+    
+    public static int Add(String numbers) {
+        if(numbers.isEmpty())
+        {
+            return 0;
+        }
+
+        String delimeter = "";
         if(numbers.startsWith("//")) {
             String firstLine = numbers.split("\n")[0];
             numbers = numbers.split("\n")[1];
-            delimeter = firstLine.substring(2);
-            
+            if(firstLine.charAt(2) != '[') {
+                delimeter = firstLine.substring(2);
+            }
+            else {
+                delimeter = get_multiple_delimeter(firstLine);
+            }
         }
         else {
            delimeter = get_default_delimeter();            
         }
-        
+
         String[] operands = get_number_lists(delimeter, numbers);
         
         int answer = 0;
