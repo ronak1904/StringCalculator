@@ -13,6 +13,10 @@ import org.junit.rules.ExpectedException;
  *
  * @author Dell
  */
+
+ /*
+ wrtitten all the test case 
+ */
 public class StringCalculatorTest {
     
     public StringCalculatorTest() {
